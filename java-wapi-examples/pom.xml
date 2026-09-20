@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.jurr.java.wapi</groupId>
+		<artifactId>java-wapi-parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>java-wapi-examples</artifactId>
+	<name>java-wapi-examples</name>
+	<description>Examples and diagnostic tools for the WING WAPI Java library; not part of the library.</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jurr.java.wapi</groupId>
+			<artifactId>java-wapi-client</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jurr.java.wapi</groupId>
+			<artifactId>java-wapi-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- ScriptedWapiTransport, for the tests -->
+		<dependency>
+			<groupId>org.jurr.java.wapi</groupId>
+			<artifactId>java-wapi-client</artifactId>
+			<version>${project.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jurr.java.slf4j.jansi</groupId>
+			<artifactId>slf4j-jansi</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.awaitility</groupId>
+			<artifactId>awaitility</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Records what the examples log, for the tests -->
+		<!-- When running tests from outside of Maven, use -Dslf4j.provider=com.github.valfirst.slf4jtest.TestSLF4JServiceProvider -->
+		<dependency>
+			<groupId>com.github.valfirst</groupId>
+			<artifactId>slf4j-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<failOnWarning>true</failOnWarning>
+					<ignoredUnusedDeclaredDependencies>
+						<ignoredUnusedDeclaredDependency>org.jurr.java.slf4j.jansi:slf4j-jansi:jar</ignoredUnusedDeclaredDependency>
+					</ignoredUnusedDeclaredDependencies>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<systemPropertyVariables>
+						<!-- Both slf4j-jansi and slf4j-test are on the test classpath; the tests use slf4j-test -->
+						<slf4j.provider>com.github.valfirst.slf4jtest.TestSLF4JServiceProvider</slf4j.provider>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

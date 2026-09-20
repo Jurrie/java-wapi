@@ -1,0 +1,4 @@
+# SDKMAN! versions for this project; with sdkman_auto_env=true they are used automatically in this folder.
+# Install them with: sdk env install
+java=17.0.20-tem
+maven=3.9.16

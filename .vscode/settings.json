@@ -1,0 +1,15 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "pdftotext": true,
+        "mvn test": true,
+        "mvn -q test": true,
+        "mvn -q -pl java-wapi-core": true,
+        "mvn -q -pl java-wapi-client": true,
+        "mvn -q -pl java-wapi-core,java-wapi-client": true,
+        "timeout": true,
+        "mvn -q clean": true,
+        "java": true
+    },
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.configuration.updateBuildConfiguration": "automatic"
+}
