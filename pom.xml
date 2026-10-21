@@ -3,7 +3,7 @@
 
 	<groupId>org.jurr.java.wapi</groupId>
 	<artifactId>java-wapi-parent</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>WING WAPI for Java</name>
